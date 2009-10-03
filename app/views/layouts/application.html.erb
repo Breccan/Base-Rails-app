@@ -3,21 +3,41 @@
 <html>
   <head>
     <title><%= h(yield(:title) || "Untitled") %></title>
-    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'application', '960', 'reset', 'text'  %>
     <%= javascript_include_tag 'application', 'jquery' %>
     <%= yield(:head) %>
   </head>
   <body>
-    <div id="container">
-      <%- flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <%- end -%>
-      
-      <%- if show_title? -%>
-        <h1><%=h yield(:title) %></h1>
-      <%- end -%>
-      
-      <%= yield %>
+    <div id="container" class="container_16">
+      <div class="header">
+        <%- flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <%- end -%>
+
+        <%- if show_title? -%>
+          <h1><%=h yield(:title) %></h1>
+        <%- end -%>
+
+        <div class="login_details">
+          <% if logged_in? %>
+            Welcome <%= current_user.username %>! Not you?
+            <%= link_to "Log out", logout_path %>
+          <% else %>
+            <%= link_to "Sign up", signup_path %> or
+            <%= link_to "log in", login_path %>.
+          <% end %>
+        </div>
+
+      </div>
+      <div class="grid_4 nav"> 
+        <h3> Navigation </h3>
+        <ul>
+          <li>Links go here. </li>
+        </ul>
+      </div>
+      <div class="content">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
