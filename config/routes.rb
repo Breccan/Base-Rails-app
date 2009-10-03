@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  #Authlogic Routes
+  map.resource :user_session
+  map.root :controller => "user_sessions", :action => "new"
+  map.resource :account, :controller => "users"
+  map.resources :users
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
