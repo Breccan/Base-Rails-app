@@ -1,5 +1,5 @@
 set :application, "App Name"
-set :rails_env, 'test'
+set :rails_env, 'draft'
 ENV['RAILS_ENV'] = RAILS_ENV = rails_env
 
 set :default_environment, {"RAILS_ENV" => rails_env}
@@ -8,5 +8,5 @@ role :web, "your web-server here"                          # Your HTTP server, A
 role :app, "your app-server here"                          # This may be the same as your `Web` server
 role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
 role :db,  "your slave db-server here"
-set :deploy_to 'var/lib/rails/%s' % application
+set :deploy_to, '/var/lib/rails/%s' % application
 set :user, 'root'

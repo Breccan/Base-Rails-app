@@ -2,8 +2,10 @@ set :application, "set your application name here"
 set :repository,  "set your repository location here"
 
 set :scm, :subversion
-set :stages, %w(test, production, ci)
-set :default_stage, 'test'
+set :stages, %w(draft production ci)
+set :default_stage, 'draft'
+set :deploy_via, :copy
+set :copy_strategy, :export
 require 'capistrano/ext/multistage'
 
 after :deploy, "init:set_permissions"
