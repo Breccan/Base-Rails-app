@@ -7,3 +7,4 @@ Formtastic
 Multistage cap for apache
 Frozen rails at 2.3.4
 .gitignore
+spec-rails
