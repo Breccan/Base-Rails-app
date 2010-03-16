@@ -13,12 +13,12 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   private
 
-  def requires_login
+  def require_user
     flash[:error] = "Access Denied: User not logged in"
     redirect_to root_url unless current_user
   end
 
-  def requires_no_login
+  def require_no_user
     flash[:error] = "User already logged in"
     redirect_to root_url if current_user
   end

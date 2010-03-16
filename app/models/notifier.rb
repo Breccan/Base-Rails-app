@@ -1,4 +1,4 @@
-class Notifier < ActiveRecord::Base
+class Notifier < ActionMailer::Base
   default_url_options[:host] = "authlogic_example.binarylogic.com"
 
   def password_reset_instructions(user)  
